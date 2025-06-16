@@ -1,1 +1,561 @@
-"Hello World" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Portfolio - Professional Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-bottom: 2px solid #333;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 68, 68, 0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .blog-post {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff4444, #cc0000, #ff4444);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 68, 68, 0.1);
+            border-color: #ff4444;
+        }
+
+        .post-date {
+            color: #ff4444;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .post-description {
+            font-size: 1.1rem;
+            color: #c0c0c0;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #333, #1a1a1a);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .image-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .image-item:hover {
+            transform: scale(1.05);
+            border-color: #ff4444;
+            box-shadow: 0 10px 25px rgba(255, 68, 68, 0.2);
+        }
+
+        .image-placeholder {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            background: linear-gradient(135deg, #222 0%, #1a1a1a 100%);
+            border: 1px solid #333;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-3px);
+            border-color: #ff4444;
+            box-shadow: 0 10px 20px rgba(255, 68, 68, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .feature p {
+            color: #b0b0b0;
+        }
+
+        .github-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 68, 68, 0.3);
+            background: transparent;
+            border-color: #ff4444;
+            color: #ff4444;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid #333;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation for blog-style layout */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50px;
+            border: 1px solid #333;
+        }
+
+        .nav-item {
+            color: #b0b0b0;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        /* Template for new blog posts */
+        .add-post-template {
+            background: rgba(255, 68, 68, 0.05);
+            border: 2px dashed #ff4444;
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            color: #ff4444;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .add-post-template:hover {
+            background: rgba(255, 68, 68, 0.1);
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .blog-post {
+                padding: 2rem;
+            }
+            
+            .post-title {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff4444;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Portfolio Blog</h1>
+            <p>Advancing Technology Through Innovation</p>
+            <div class="subtitle">A journey through my software engineering projects</div>
+        </div>
+
+        <nav class="nav">
+            <a href="#projects" class="nav-item active">Projects</a>
+            <a href="#achievements" class="nav-item">Achievements</a>
+            <a href="#research" class="nav-item">Research</a>
+            <a href="#about" class="nav-item">About</a>
+        </nav>
+
+        <!-- Template for adding new posts -->
+        <div class="add-post-template">
+            <h3>📝 Add New Project</h3>
+            <p>Copy this HTML structure below to add your next project or achievement</p>
+        </div>
+
+        <!-- Blog Post 1: Emergency Vehicle Detection -->
+        <article class="blog-post">
+            <div class="post-date">June 2025 • Computer Vision Project</div>
+            <h2 class="post-title">Emergency Vehicle Detection System</h2>
+            
+            <p class="post-description">
+                Developed an advanced AI-powered emergency vehicle detection system utilizing a fine-tuned YOLOv5 architecture. This intelligent system automatically identifies and classifies emergency vehicles with active emergency lighting, including police cars, ambulances, and fire trucks, enabling real-time traffic management and emergency response optimization.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-tag">YOLOv5</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Computer Vision</span>
+                <span class="tech-tag">Deep Learning</span>
+                <span class="tech-tag">Real-time Detection</span>
+                <span class="tech-tag">Python</span>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">95%+</div>
+                    <div class="stat-label">Detection Accuracy</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30+ FPS</div>
+                    <div class="stat-label">Real-time Processing</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Vehicle Classes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Training Images</div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Precision Detection</h3>
+                    <p>High-accuracy identification of emergency vehicles with active lighting systems using state-of-the-art object detection algorithms.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Processing</h3>
+                    <p>Optimized for real-time inference with minimal latency, suitable for deployment in traffic management systems.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🌙</div>
+                    <h3>All-weather Performance</h3>
+                    <p>Robust detection capabilities across various lighting conditions, including nighttime and adverse weather scenarios.</p>
+                </div>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-item">
+                    <div class="image-placeholder" style="background: linear-gradient(45deg, #333, #1a1a1a);">
+                        Police Vehicle Detection
+                    </div>
+                </div>
+                <div class="image-item">
+                    <div class="image-placeholder" style="background: linear-gradient(45deg, #2a2a2a, #1a1a1a);">
+                        Ambulance Detection
+                    </div>
+                </div>
+                <div class="image-item">
+                    <div class="image-placeholder" style="background: linear-gradient(45deg, #333, #2a2a2a);">
+                        Fire Truck Detection
+                    </div>
+                </div>
+                <div class="image-item">
+                    <div class="image-placeholder" style="background: linear-gradient(45deg, #1a1a1a, #333);">
+                        Multi-vehicle Scenarios
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="#" class="github-link">
+                    🔗 View on GitHub
+                </a>
+            </div>
+        </article>
+
+        <!-- Template for your next blog post - copy this structure -->
+        <article class="blog-post" style="opacity: 0.7; border-style: dashed;">
+            <div class="post-date">Month Year • Project Type</div>
+            <h2 class="post-title">Your Next Project Title</h2>
+            
+            <p class="post-description">
+                Add your project description here. Explain what you built, the technologies you used, and the problems you solved. Make it engaging and professional.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-tag">Technology 1</span>
+                <span class="tech-tag">Technology 2</span>
+                <span class="tech-tag">Technology 3</span>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">XX%</div>
+                    <div class="stat-label">Your Metric</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">XX</div>
+                    <div class="stat-label">Another Metric</div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="#" class="github-link">
+                    🔗 View Project
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Smooth scrolling and interactive effects
+        document.querySelectorAll('.image-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) rotate(0.5deg)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Navigation functionality
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stats = entry.target.querySelectorAll('.stat-number');
+                    stats.forEach(stat => {
+                        const finalValue = stat.textContent;
+                        if (finalValue.includes('XX')) return; // Skip template stats
+                        
+                        stat.textContent = '0';
+                        
+                        const increment = () => {
+                            const current = parseInt(stat.textContent);
+                            const target = parseInt(finalValue);
+                            const step = Math.ceil(target / 20);
+                            
+                            if (current < target) {
+                                stat.textContent = Math.min(current + step, target) + (finalValue.includes('%') ? '%' : finalValue.includes('FPS') ? ' FPS' : finalValue.includes('+') ? '+' : '');
+                                setTimeout(increment, 50);
+                            }
+                        };
+                        
+                        setTimeout(increment, Math.random() * 500);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stats').forEach(stats => {
+            observer.observe(stats);
+        });
+
+        // Blog post hover effects
+        document.querySelectorAll('.blog-post').forEach(post => {
+            post.addEventListener('mouseenter', function() {
+                this.style.borderColor = '#ff6666';
+            });
+            
+            post.addEventListener('mouseleave', function() {
+                if (!this.style.borderStyle.includes('dashed')) {
+                    this.style.borderColor = '#333';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
